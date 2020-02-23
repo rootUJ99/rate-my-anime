@@ -33,7 +33,7 @@ const ApiConstants = {
         method: 'GET',
       },
       attachPrefix: true,
-      skipAuth: true,
+      skipAuth: false,
     },
     add: {
       apiConfig: {
@@ -41,7 +41,7 @@ const ApiConstants = {
         method: 'POST',
       },
       attachPrefix: true,
-      skipAuth: true,
+      skipAuth: false,
     },
     update: {
       apiConfig: {
@@ -54,7 +54,7 @@ const ApiConstants = {
         },
       },
       attachPrefix: true,
-      skipAuth: true,
+      skipAuth: false,
     },
     delete: {
       apiConfig: {
@@ -67,7 +67,51 @@ const ApiConstants = {
         },
       },
       attachPrefix: true,
+      skipAuth: false,
+    },
+  },
+  user: {
+    login: {
+      apiConfig: {
+        url: '/users/token',
+        method: 'POST',
+      },
+      attachPrefix: true,
       skipAuth: true,
+    },
+    register: {
+      apiConfig: {
+        url: '/users/create',
+        method: 'POST',
+      },
+      attachPrefix: true,
+      skipAuth: true,
+    },
+    detail: {
+        apiConfig: {
+          url: '/users/details/{id}',
+          method: 'GET',
+        },
+        config: {
+          pathVariables: {
+            id: '',
+          },
+        },
+        attachPrefix: true,
+        skipAuth: false,
+    },
+    update: {
+        apiConfig: {
+          url: '/users/details/{id}',
+          method: 'PUT',
+        },
+        config: {
+          pathVariables: {
+            id: '',
+          },
+        },
+        attachPrefix: true,
+        skipAuth: false,
     },
   },
 };

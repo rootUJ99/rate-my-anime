@@ -1,8 +1,21 @@
 import React, {useContext, useReducer} from 'react';
 import { useForm } from "react-hook-form";
 import {useHistory} from 'react-router-dom';
+import { TextInput, TextArea } from 'grommet';
 import {addAnimeService, updateAnimeService, deleteAnimeService} from './serviceCalls';
 import RootContext from '../../rootContext';
+import Button from '../../components/Button';
+import styled from 'styled-components';
+
+
+const Wrapper = styled.div`
+  display: grid;
+  grid-template-rows: auto; 
+  grid-gap: 1rem;
+  margin: 1rem;
+  /* width: 60%; */
+  justify-content: center;
+`;
 
 const NewAnime = (props) => {
   const history = useHistory();
@@ -31,13 +44,38 @@ const NewAnime = (props) => {
   return (
     <>
     <form onSubmit={handleSubmit(onSubmit)}>
-      <input type="text" placeholder="animeName" name="animeName" ref={register({required: true, maxLength: 500})} defaultValue={setInitialValue("animeName")}/>
-      <input type="text" placeholder="rating" name="rating" ref={register({required: true, max: 5, min: 1, maxLength: 1})} defaultValue={setInitialValue("rating")}/>
-      <input type="text" placeholder="review" name="review" ref={register({required: true, maxLength: 1000})} defaultValue={setInitialValue("review")}/>
-      <input type="text" placeholder="thumbUrl" name="thumbUrl" ref={register({required: true})} defaultValue={setInitialValue("thumbUrl")}/>
-      <button type="submit">Submit</button>
+      <Wrapper>
+      <TextInput 
+        type="text" 
+        placeholder="Anime Name" 
+        name="animeName" 
+        ref={register({required: true, maxLength: 500})} 
+        defaultValue={setInitialValue("animeName")}
+      />
+      <TextInput 
+        type="text" 
+        placeholder="Rating" 
+        name="rating" 
+        ref={register({required: true, max: 5, min: 1, maxLength: 1})} 
+        defaultValue={setInitialValue("rating")}
+      />
+      <TextArea 
+        type="text" 
+        placeholder="review" 
+        name="review" 
+        ref={register({required: true, maxLength: 1000})} 
+        defaultValue={setInitialValue("review")}
+      />
+      <TextInput 
+        type="text" 
+        placeholder="thumbUrl" 
+        name="thumbUrl" 
+        ref={register({required: true})} 
+        defaultValue={setInitialValue("thumbUrl")}/>
+      <Button type="submit">Submit</Button>
+    </Wrapper>
     </form>
-    {!selectedAnime.newAnime && <button name="deleteAnime" onClick={deleteAnime}>delete anime </button>}
+    {!selectedAnime.newAnime && <Button name="deleteAnime" onClick={deleteAnime}>delete anime </Button>}
     </>
   );
 } 

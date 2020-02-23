@@ -3,18 +3,18 @@ import {
   // localApiUrlPrefixes,
   currentEnvironmentConfig,
 } from './environmentConfig';
-// import { getFromLocalStorage } from '../utils/localStorageUtils';
+// import { getFromLocalStorage } from '../utils';
 import ApiConstants from './apiConstants';
 
-// const getJWTHeader = (config, useRefreshToken = false) => {
-//   const enhancedConfig = config;
-//   const oats = getFromLocalStorage('OATS');
-//   enhancedConfig.headers = {
-//     ...config.headers,
-//     Authorization: `Bearer ${useRefreshToken ? oats.refresh_token : oats.access_token}`,
-//   };
-//   return enhancedConfig;
-// };
+const getJWTHeader = (config, useRefreshToken = false) => {
+  const enhancedConfig = config;
+  const token = localStorage.getItem('token');
+  enhancedConfig.headers = {
+    ...config.headers,
+    Authorization: `Bearer ${token}`,
+  };
+  return enhancedConfig;
+};
 const spinLoaderConfigDefault = {
   isEnabled: true,
   actionFunction: () => {},
@@ -54,9 +54,10 @@ const getConfig = apiKey => {
       const currentApi = ApiConstants[apiKeyParams[0]][apiKeyParams[1]];
       config = { ...currentApi.config };
       config = config || {};
-      // if (currentEnvironmentConfig.enableAuthorization && !currentApi.skipAuth) {
-      //   config = getJWTHeader(config, currentApi.useRefreshToken);
-      // }
+      if (currentEnvironmentConfig.enableAuthorization && !currentApi.skipAuth) {
+        console.log('x',currentApi.useRefreshToken)
+        config = getJWTHeader(config, currentApi.useRefreshToken);
+      }
       config.apiKey = apiKey;
     }
   }
