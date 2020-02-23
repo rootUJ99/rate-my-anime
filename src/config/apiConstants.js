@@ -29,7 +29,7 @@ const ApiConstants = {
   anime: {
     list: {
       apiConfig: {
-        url: '/api/animeList',
+        url: '/api/anime/list',
         method: 'GET',
       },
       attachPrefix: true,
@@ -37,7 +37,7 @@ const ApiConstants = {
     },
     add: {
       apiConfig: {
-        url: '/api/addAnime',
+        url: '/api/anime/add',
         method: 'POST',
       },
       attachPrefix: true,
@@ -45,7 +45,7 @@ const ApiConstants = {
     },
     update: {
       apiConfig: {
-        url: '/api/updateAnime/{id}',
+        url: '/api/anime/update/{id}',
         method: 'PUT',
       },
       config: {
@@ -58,7 +58,7 @@ const ApiConstants = {
     },
     delete: {
       apiConfig: {
-        url: '/api/deleteAnime/{id}',
+        url: '/api/anime/delete/{id}',
         method: 'DELETE',
       },
       config: {
@@ -73,7 +73,7 @@ const ApiConstants = {
   user: {
     login: {
       apiConfig: {
-        url: '/users/token',
+        url: '/api/users/token',
         method: 'POST',
       },
       attachPrefix: true,
@@ -81,7 +81,7 @@ const ApiConstants = {
     },
     register: {
       apiConfig: {
-        url: '/users/create',
+        url: '/api/users/create',
         method: 'POST',
       },
       attachPrefix: true,
@@ -89,7 +89,7 @@ const ApiConstants = {
     },
     detail: {
         apiConfig: {
-          url: '/users/details/{id}',
+          url: '/api/users/details/{id}',
           method: 'GET',
         },
         config: {
@@ -102,7 +102,7 @@ const ApiConstants = {
     },
     update: {
         apiConfig: {
-          url: '/users/details/{id}',
+          url: '/api/users/details/{id}',
           method: 'PUT',
         },
         config: {
