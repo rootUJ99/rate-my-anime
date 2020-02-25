@@ -73,7 +73,7 @@ const ApiConstants = {
   user: {
     login: {
       apiConfig: {
-        url: '/api/users/token',
+        url: '/api/user/token',
         method: 'POST',
       },
       attachPrefix: true,
@@ -81,7 +81,7 @@ const ApiConstants = {
     },
     register: {
       apiConfig: {
-        url: '/api/users/create',
+        url: '/api/user/create',
         method: 'POST',
       },
       attachPrefix: true,
@@ -89,7 +89,7 @@ const ApiConstants = {
     },
     detail: {
         apiConfig: {
-          url: '/api/users/details/{id}',
+          url: '/api/user/details/{id}',
           method: 'GET',
         },
         config: {
@@ -102,7 +102,7 @@ const ApiConstants = {
     },
     update: {
         apiConfig: {
-          url: '/api/users/details/{id}',
+          url: '/api/user/details/{id}',
           method: 'PUT',
         },
         config: {

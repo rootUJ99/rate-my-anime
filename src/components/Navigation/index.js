@@ -37,7 +37,7 @@ const SidebarButton = ({ label, ...rest }) => (
   </Button>
 );
 const SidebarNav = () => {
-  // const history = useHistory();
+  const history = useHistory();
   const [active, setActive] = useState();
   return (
     // <Grommet>
@@ -49,7 +49,7 @@ const SidebarNav = () => {
               label={nav.value}
               active={nav.label === active}
               onClick={() => {
-                // history.push(nav.route);
+                history.push(nav.route);
                 setActive(nav.label)
               }}
             />
