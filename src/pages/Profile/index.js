@@ -14,6 +14,7 @@ const Profile = () => {
     console.log(tokenData.data.token);
     localStorage.setItem('token', tokenData.data.token);
     };
+    
   console.log(errors)
   return(
     <>

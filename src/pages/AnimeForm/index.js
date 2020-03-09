@@ -5,16 +5,17 @@ import { TextInput, TextArea } from 'grommet';
 import {addAnimeService, updateAnimeService, deleteAnimeService} from './serviceCalls';
 import RootContext from '../../rootContext';
 import Button from '../../components/Button';
+import { CenterWrapper } from '../../StyledComponents';
 import styled from 'styled-components';
 
 
-const Wrapper = styled.div`
-  display: grid;
-  grid-template-rows: auto; 
-  grid-gap: 1rem;
+const Wrapper = styled(CenterWrapper)`
   margin: 1rem;
-  /* width: 60%; */
-  justify-content: center;
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: space-evenly;
 `;
 
 const NewAnime = (props) => {
@@ -33,6 +34,7 @@ const NewAnime = (props) => {
   };
 
   const setInitialValue = (value) => {
+    
     if (!selectedAnime.newAnime) return selectedAnime[value];
   }
 
@@ -72,10 +74,13 @@ const NewAnime = (props) => {
         name="thumbUrl" 
         ref={register({required: true})} 
         defaultValue={setInitialValue("thumbUrl")}/>
-      <Button type="submit">Submit</Button>
+      <ButtonWrapper> 
+      <Button type="submit">{!selectedAnime.newAnime ? 'Submit' : 'Update'}</Button>
+      {!selectedAnime.newAnime && 
+      <Button name="deleteAnime" onClick={deleteAnime}>Delete</Button>}
+      </ButtonWrapper>
     </Wrapper>
     </form>
-    {!selectedAnime.newAnime && <Button name="deleteAnime" onClick={deleteAnime}>delete anime </Button>}
     </>
   );
 } 

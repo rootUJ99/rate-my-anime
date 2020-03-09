@@ -1,14 +1,10 @@
 import React, { useState } from "react";
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import {  Box, Button, Nav, Text } from "grommet"
+import {  Box, Button, Text } from "grommet"
 import { Home, User } from "grommet-icons";
-const Wrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  /* padding: 0.7rem; */
-`;
+import {GridWrapWithColours} from './styles';
+
 const navlist =[
   {
     label: "Home",
@@ -23,13 +19,11 @@ const navlist =[
 const SidebarButton = ({ label, ...rest }) => (
   <Button plain {...rest}>
     {(buttonProps) => {
-    // console.log('buttonProps', buttonPro/ps);
     return(
       <Box
         background={buttonProps.hover ? "#d7e9ed" : undefined}
         pad={{ horizontal: "medium", vertical: "small" }}
         round="large"
-
       >
         <Text size="large">{label}</Text>
       </Box>
@@ -40,9 +34,7 @@ const SidebarNav = () => {
   const history = useHistory();
   const [active, setActive] = useState();
   return (
-    // <Grommet>
-      <Wrapper>
-        <Nav background="#89b8c2" round="large">
+      <GridWrapWithColours>
           {navlist.map(nav => (
             <SidebarButton
               key={nav.label}
@@ -54,9 +46,7 @@ const SidebarNav = () => {
               }}
             />
           ))}
-        </Nav>
-      </Wrapper>
-    // </Grommet>
+      </GridWrapWithColours>
   );
 };
 

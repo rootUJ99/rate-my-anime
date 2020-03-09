@@ -13,6 +13,7 @@ const GlobalStyles = createGlobalStyle`
 body {
   /* font-family: 'Noto Sans KR', sans-serif; */
   font-family: 'Source Sans Pro', sans-serif;
+  font-size: calc(1vw + 1vh + .5vmin);
 }
 `;
 
