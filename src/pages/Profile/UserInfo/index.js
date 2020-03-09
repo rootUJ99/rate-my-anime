@@ -2,10 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Grommet, Main } from "grommet";
 import { Edit } from "grommet-icons";
 import Button from '../../../components/Button';
+import Modal from "../../../components/Modal";
+import Register from "../Register";
 import {getUserDetails} from '../serviceCalls';
 import { CenterWrapper } from '../../../StyledComponents';
+
 const UserInfo = (props) => {
-  const [userInfo, setUserInfo] = useState({})
+  const [userInfo, setUserInfo] = useState({});
+  const [userModal, setUserModal] = useState(false);
   useEffect(() => {
     (async ()=> {
       const userInfo = await getUserDetails(props.userInfo.id)
@@ -13,8 +17,9 @@ const UserInfo = (props) => {
     })()
   }, []);
 
-  const editProfile = () => {
+  const handleEditProfile = () => {
     console.log('edit');
+    setUserModal(true);
   }
   return (
     <>
@@ -26,10 +31,13 @@ const UserInfo = (props) => {
             <p>Date of Birth ---> <b>{userInfo.dob}</b> </p>
             <p>Mobile No. ---> <b>{userInfo.mobileNumber}</b> </p>
             <p>Email ---> <b>{userInfo.email}</b> </p>
-            <Button name="editProfile" onClick={editProfile}>Edit <Edit/></Button>
+            <Button name="editProfile" onClick={handleEditProfile}>Edit <Edit/></Button>
           </CenterWrapper>
         </Main>
       </Grommet>
+      <Modal open={userModal} onClose={()=> setUserModal(false)}>
+        <Register userInfo={userInfo}/>
+      </Modal>
     </>
   )
 }

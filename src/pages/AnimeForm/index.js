@@ -29,18 +29,17 @@ const NewAnime = (props) => {
     if (selectedAnime.newAnime){
       await addAnimeService({...data});
     } else {
-      await updateAnimeService(selectedAnime._id, {...data})
+      await updateAnimeService(selectedAnime._id, {...data});
     }
   };
 
   const setInitialValue = (value) => {
-    
     if (!selectedAnime.newAnime) return selectedAnime[value];
   }
 
   const deleteAnime = async () => {
     await deleteAnimeService(selectedAnime._id);
-    history.push('/')
+    history.push('/');
   }
   console.log(state);
   return (

@@ -26,7 +26,13 @@ const Home = () => {
     dispatch({ type: "select_anime", data: { ...it, newAnime: false } });
     setAnimeModal(true);
   };
-
+  const handleModalOpen = () => {
+    setAnimeModal(true);
+  }
+  const handleModalClose = () => {
+    setAnimeModal(false)
+    dispatch({ type: "select_anime", data: { newAnime: true } });
+  }
   return (
     <Grommet>
       { userInfo ? 
@@ -34,17 +40,17 @@ const Home = () => {
       <Main background='#f6f6f6' pad='medium' round='medium'>
         <h1>
           watched new anime? add a review &nbsp;
-          <Button icon={<Add />} onClick={() => setAnimeModal(true)} />
+          <Button icon={<Add />} onClick={handleModalOpen} />
         </h1>
       </Main>
       <br />
       <Main background='#f6f6f6' pad='medium' round='medium'>
         <h3>Recently watched animes</h3>
-        <Modal open={animeModal} onClose={() => setAnimeModal(false)}>
-          <AnimeForm />
-        </Modal>
         <ProductGrid list={list} onEdit={onEdit}/>
       </Main> 
+      <Modal open={animeModal} onClose={handleModalClose}>
+        <AnimeForm />
+      </Modal>
       </>
       : 
         history.push('/profile')
