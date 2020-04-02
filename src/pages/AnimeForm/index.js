@@ -41,7 +41,6 @@ const NewAnime = (props) => {
     await deleteAnimeService(selectedAnime._id);
     history.push('/');
   }
-  console.log(state);
   return (
     <>
     <form onSubmit={handleSubmit(onSubmit)}>
