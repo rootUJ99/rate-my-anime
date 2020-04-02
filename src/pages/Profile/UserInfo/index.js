@@ -36,7 +36,7 @@ const UserInfo = (props) => {
         </Main>
       </Grommet>
       <Modal open={userModal} onClose={()=> setUserModal(false)}>
-        <Register userInfo={userInfo}/>
+        <Register userInfo={userInfo} updateUser/>
       </Modal>
     </>
   )

@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { TextInput } from "grommet";
 import styled from "styled-components";
 import Button from "../../../components/Button";
-import { createUser } from "../serviceCalls";
+import { createUserService, updateUserService } from "../serviceCalls";
 import {CenterWrapper} from '../../../StyledComponents'
 
 const Wrapper = styled(CenterWrapper)`
@@ -13,8 +13,13 @@ const Wrapper = styled(CenterWrapper)`
 const Register = (props) => {
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = async data => {
-    const tokenData = await createUser(data);
-    console.log(tokenData.data);
+    if (!props.updateUser){
+      const tokenData = await createUserService(data);
+      console.log(tokenData.data);
+    } else {
+      const updateUser = await updateUserService(data);
+      console.log(updateUser);
+    }
   };
 
   const setInitialValue = value => {
@@ -60,7 +65,7 @@ const Register = (props) => {
             ref={register({ required: true })}
             defaultValue={setInitialValue('dob')}
           />
-          <Button type='submit'>Register</Button>
+          <Button type='submit'>{props.updateUser ? 'Update' : 'Register'}</Button>
         </Wrapper>
       </form>
     </>

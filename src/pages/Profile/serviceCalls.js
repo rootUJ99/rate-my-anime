@@ -9,7 +9,7 @@ export const getToken = async(data) =>{
   return apiInstance.call()
 }
 
-export const createUser = async(data) =>{
+export const createUserService = async(data) =>{
   const config = getConfig('user.register');
   config.data = {...data}
   const apiInstance = new ApiService(config);
@@ -25,7 +25,7 @@ export const getUserDetails = async(id) =>{
   return apiInstance.call()
 }
 
-export const updateUser = async(data) =>{
+export const updateUserService = async(data) =>{
   const config = getConfig('user.update');
   config.data = {...data}
   const apiInstance = new ApiService(config);
