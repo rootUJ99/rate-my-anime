@@ -1,18 +1,21 @@
-FROM node:13.12.0-buster
+FROM ubuntu:eoan
+RUN apt-get update && apt-get install -y apt-transport-https
+RUN apt-get install --yes curl
+RUN curl -sL https://deb.nodesource.com/setup_13.x | bash -
 
-RUN apt-get update && apt-get install apt-file -y && apt-file update
+RUN apt-get install --yes nodejs
+RUN apt-get install --yes build-essential
 
 WORKDIR /opt/ratemyanime/client
 
 COPY package.json .
-RUN ls; pwd;
-RUN npm --version; 
-RUN node --version; 
 
-RUN npm install
+RUN npm cache clean --force
+RUN npm install -g yarn
+RUN yarn install
 
 COPY . ./
 
 EXPOSE 3000
 
-CMD [ “npm”, “start” ] 
+CMD [ "yarn", "start" ]
