@@ -1,12 +1,10 @@
 import React, { useEffect, useContext, useState } from "react";
-import { Add } from "grommet-icons";
 import { useHistory } from "react-router-dom";
 import { getAnimeList } from "./serviceCalls";
+import Card from '../../components/Card';
 import RootContext from "../../rootContext";
 import Button from "../../components/Button";
-import { Grommet, Main } from "grommet";
 import ProductGrid from "../../components/ProductGrid";
-import Modal from "../../components/Modal";
 import AnimeForm from "../AnimeForm";
 
 const Home = () => {
@@ -34,28 +32,25 @@ const Home = () => {
     dispatch({ type: "select_anime", data: { newAnime: true } });
   }
   return (
-    <Grommet>
+    <div >
+{/* 
       { userInfo ? 
       <>
-      <Main background='#f6f6f6' pad='medium' round='medium'>
         <h1>
           watched new anime? add a review &nbsp;
-          <Button icon={<Add />} onClick={handleModalOpen} />
+          <Button onClick={handleModalOpen} > hollaz </Button>
         </h1>
-      </Main>
       <br />
-      <Main background='#f6f6f6' pad='medium' round='medium'>
-        <h3>Recently watched animes</h3>
         <ProductGrid list={list} onEdit={onEdit}/>
-      </Main> 
-      <Modal open={animeModal} onClose={handleModalClose}>
         <AnimeForm />
-      </Modal>
       </>
       : 
-        history.push('/profile')
-      }
-    </Grommet>
+      history.push('/profile')
+    } */}
+    <Card>
+      holla
+    </Card>
+    </div>
   );
 };
 export default Home;
