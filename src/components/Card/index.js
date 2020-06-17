@@ -4,10 +4,12 @@ const Container = styled.div`
   background: #F6F6F6;
   padding: 1rem;
   border-radius: 0.5rem;
+  width: ${props => props.width}
+
 `;
-const Card = ({children})=> {
+const Card = ({children, width})=> {
   return (
-    <Container>
+    <Container width={width}>
       {children}
     </Container>
   )

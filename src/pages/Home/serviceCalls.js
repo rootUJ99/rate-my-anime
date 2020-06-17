@@ -8,3 +8,10 @@ export const getAnimeList = async() =>{
   // console.log('service call',await apiInstance.call());
   return apiInstance.call()
 }
+export const getMyAnimeList = async() =>{
+  const config = getConfig('anime.myAnimeList');
+  // eslint-disable-next-line no-unused-vars
+  const apiInstance = new ApiService(config);
+  // console.log('service call',await apiInstance.call());
+  return apiInstance.call()
+}

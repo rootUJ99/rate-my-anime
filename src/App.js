@@ -1,6 +1,7 @@
 import React from 'react';
 import Routes from './routes';
 import GlobalStyles from './GlobalStyles';
+import Header from './components/Header';
 import styled from 'styled-components';
 
 const ClipPathParent = styled.div`
@@ -28,11 +29,7 @@ const App = ()=> {
       <GlobalStyles/>
       <ClipPathParent>
         <ClipPath/>
-          <img src="ratefox.svg" style={{
-            width:'5%%',
-            height:'10%',
-            margin:'auto auto',
-          }}/>
+          <Header/>
           <Routes/>
       </ClipPathParent>
       </>

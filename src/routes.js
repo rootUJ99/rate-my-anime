@@ -10,7 +10,7 @@ import {initialState, reducer} from './reducer';
 
 const GridWRapper = styled.div`
   margin: 1rem;
-  margin-left: 5rem;
+  margin-left: 7rem;
   @media (max-width: 640px) {
     margin-left: 1rem;
   }

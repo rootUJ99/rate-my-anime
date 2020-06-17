@@ -69,6 +69,19 @@ const ApiConstants = {
       attachPrefix: true,
       skipAuth: false,
     },
+    myAnimeList: {
+      apiConfig: {
+        url: '/api/anime/myAnimelist?animeName=naruto',
+        method: 'GET',
+      },
+      config: {
+        pathVariables: {
+          id: '',
+        },
+      },
+      attachPrefix: true,
+      skipAuth: false,
+    }
   },
   user: {
     login: {
