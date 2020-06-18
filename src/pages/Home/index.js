@@ -2,6 +2,7 @@ import React, { useEffect, useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { getAnimeList, getMyAnimeList } from "./serviceCalls";
 import Card from '../../components/Card';
+import Label from '../../components/Label';
 import RootContext from "../../rootContext";
 import Button from "../../components/Button";
 import ProductGrid from "../../components/ProductGrid";
@@ -67,6 +68,7 @@ const Home = () => {
       myAnimeList.map(it=> 
         <Card width="16rem">
           <img src={it.image_url}/>
+          <Label>{it.title}</Label>
         </Card>
         )
     }
