@@ -7,9 +7,9 @@ const Container = styled.div`
   width: ${props => props.width};
   box-shadow: -16px -20px 53px -19px rgba(0,0,0,0.36);
 `;
-const Card = ({children, width})=> {
+const Card = ({children, width, ...rest})=> {
   return (
-    <Container width={width}>
+    <Container width={width} {...rest}>
       {children}
     </Container>
   )

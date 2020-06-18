@@ -9,15 +9,16 @@ const navlist =[
     icon: <FiHome />
   },
   {
-    name: "Home",
-    route: '/',
+    name: "Search",
+    route: '/search',
     icon: <FiPlusCircle />
   },
   {
     name: "Profile",
     route: '/profile',
     icon: <FiUser />
-  }];
+  },
+];
 const SidebarNav = () => {
   const history = useHistory();
   return (

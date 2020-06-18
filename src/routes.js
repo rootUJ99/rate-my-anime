@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Navigation from './components/Navigation';
 import NewAnime from './pages/AnimeForm';
 import Profile from './pages/Profile';
+import Search from './pages/Search';
 import RootContext from './rootContext';
 import {initialState, reducer} from './reducer';
 
@@ -17,7 +18,8 @@ const GridWRapper = styled.div`
 `;
 const routes = [
   { path: '/', component: <Home/> },
-  { path: '/addNew', component: <NewAnime/> },
+  { path: '/add', component: <NewAnime/> },
+  { path: '/search', component: <Search/> },
   { path: '/profile', component: <Profile/> },
 ];
 const Routes = () => {

@@ -1,7 +1,18 @@
 import React from 'react';
-import './styles.css';
+import styled from 'styled-components';
+
+const InputWrapper = styled.input`
+  border: none;
+  border-bottom: 2px solid #8EC5FC;
+  outline:none;
+  width: ${(props) => props.width || '15rem'};
+  height: 2rem;
+  padding: 1rem;
+  border-radius: 1rem;
+`;
+
 const Input = ({label, ...props}) => (
-  <input {...props} className="inpt" placeholder={props.name}/>
+  <InputWrapper {...props} className="inpt" placeholder={props.name}/>
 );
 
 export default Input;

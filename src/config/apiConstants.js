@@ -71,12 +71,12 @@ const ApiConstants = {
     },
     myAnimeList: {
       apiConfig: {
-        url: '/api/anime/myAnimelist?animeName=naruto',
+        url: '/api/anime/myAnimelist',
         method: 'GET',
       },
       config: {
-        pathVariables: {
-          id: '',
+        urlParams: {
+          animeName: '',
         },
       },
       attachPrefix: true,

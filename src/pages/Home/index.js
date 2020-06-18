@@ -14,10 +14,15 @@ const GridContainer = styled.div`
   grid-gap: 2rem;
   justify-items:center;
 `;
-const StyledImage = styled.img`
-  width: 15rem;
-  @media (max-width: 420px) {
-    width: 7rem;
+// const StyledImage = styled.img`
+//   width: 15rem;
+//   @media (max-width: 420px) {
+//     width: 7rem;
+//   }
+// `;
+const SelectionWrapper = styled.div`
+  :hover {
+    background: black;
   }
 `;
 const Home = () => {
@@ -67,8 +72,10 @@ const Home = () => {
     {
       myAnimeList.map(it=> 
         <Card width="16rem">
+          <SelectionWrapper>
           <img src={it.image_url}/>
           <Label>{it.title}</Label>
+          </SelectionWrapper>
         </Card>
         )
     }
