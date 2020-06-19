@@ -1,7 +1,7 @@
 import React, {useContext, useReducer} from 'react';
 import { useForm } from "react-hook-form";
 import {useHistory} from 'react-router-dom';
-import { TextInput, TextArea } from 'grommet';
+import Input from '../../components'
 import {addAnimeService, updateAnimeService, deleteAnimeService} from './serviceCalls';
 import RootContext from '../../rootContext';
 import Button from '../../components/Button';
@@ -45,28 +45,28 @@ const NewAnime = (props) => {
     <>
     <form onSubmit={handleSubmit(onSubmit)}>
       <Wrapper>
-      <TextInput 
+      <Input 
         type="text" 
         placeholder="Anime Name" 
         name="animeName" 
         ref={register({required: true, maxLength: 500})} 
         defaultValue={setInitialValue("animeName")}
       />
-      <TextInput 
+      <Input 
         type="text" 
         placeholder="Rating" 
         name="rating" 
         ref={register({required: true, max: 5, min: 1, maxLength: 1})} 
         defaultValue={setInitialValue("rating")}
       />
-      <TextArea 
-        type="text" 
+      <Input 
+        type="textarea" 
         placeholder="review" 
         name="review" 
         ref={register({required: true, maxLength: 1000})} 
         defaultValue={setInitialValue("review")}
       />
-      <TextInput 
+      <Input 
         type="text" 
         placeholder="thumbUrl" 
         name="thumbUrl" 

@@ -10,9 +10,23 @@ const InputWrapper = styled.input`
   padding: 1rem;
   border-radius: 1rem;
 `;
+const TextAtraWrapper = styled.textarea`
+  border: none;
+  border-bottom: 2px solid #8EC5FC;
+  outline:none;
+  width: ${(props) => props.width || '15rem'};
+  /* height: 2rem; */
+  padding: 1rem;
+  border-radius: 1rem;
+`;
 
-const Input = ({label, ...props}) => (
-  <InputWrapper {...props} className="inpt" placeholder={props.name}/>
+const Input = ({label,type,children, ...props}) => (
+  type === 'textarea' ? 
+  <TextAtraWrapper {...props} placeholder={props.name}>
+    {children}
+  </TextAtraWrapper>
+  :
+  <InputWrapper {...props} placeholder={props.name}/>
 );
 
 export default Input;
