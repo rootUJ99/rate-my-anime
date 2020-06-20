@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { TextInput } from 'grommet';
+import Input from '../../../components/Input';
 import styled from 'styled-components';
 import Button from '../../../components/Button';
 import { getToken } from '../serviceCalls';
@@ -26,8 +26,8 @@ const Login = () => {
     <>
     <form onSubmit={handleSubmit(onSubmit)}>
       <Wrapper>
-        <TextInput type="text" placeholder="userName" name="userName" ref={register({required: true})} />
-        <TextInput type="password" placeholder="password" name="password" ref={register({required: true})} />
+        <Input type="text" placeholder="userName" name="userName" ref={register({required: true})} />
+        <Input type="password" placeholder="password" name="password" ref={register({required: true})} />
         <Button type="submit">Login</Button>
       </Wrapper>
     </form>

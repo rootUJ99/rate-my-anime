@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { TextInput } from "grommet";
+import Input from "../../../components/Input";
 import styled from "styled-components";
 import Button from "../../../components/Button";
 import { createUserService, updateUserService } from "../serviceCalls";
@@ -30,35 +30,35 @@ const Register = (props) => {
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Wrapper>
-          <TextInput
+          <Input
             type='email'
             placeholder='email'
             name='email'
             ref={register({ required: true })}
             defaultValue={setInitialValue('email')}
           />
-          <TextInput
+          <Input
             type='text'
             placeholder='userName'
             name='userName'
             ref={register({ required: true })}
             defaultValue={setInitialValue('userName')}
           />
-          <TextInput
+          <Input
             type='password'
             placeholder='password'
             name='password'
             ref={register({ required: true })}
             defaultValue={setInitialValue('password')}
           />
-          <TextInput
+          <Input
             type='text'
             placeholder='mobileNumber'
             name='mobileNumber'
             ref={register({ required: true })}
             defaultValue={setInitialValue('mobileNumber')}
           />
-          <input
+          <Input
             type='date'
             placeholder='dob'
             name='dob'
