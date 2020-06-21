@@ -13,7 +13,7 @@ const ButtonWrapper = styled.button`
 `;
 
 const Button = ({children, ...props}) => (
-  <ButtonWrapper {...props} className="btn">
+  <ButtonWrapper {...props} >
     {children}
   </ButtonWrapper>
 );

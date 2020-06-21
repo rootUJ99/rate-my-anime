@@ -28,7 +28,8 @@ const SearchPage = () => {
   const handleClickCards = (anime) => {
     console.log('1')
     history.push('/add', {
-      selectedAnime: anime
+      selectedAnime: {...anime, new: true},
+      
     });
   }
   return (
