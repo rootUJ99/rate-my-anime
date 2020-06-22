@@ -55,7 +55,6 @@ const getConfig = apiKey => {
       config = { ...currentApi.config };
       config = config || {};
       if (currentEnvironmentConfig.enableAuthorization && !currentApi.skipAuth) {
-        console.log('x',currentApi.useRefreshToken)
         config = getJWTHeader(config, currentApi.useRefreshToken);
       }
       config.apiKey = apiKey;

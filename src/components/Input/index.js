@@ -20,13 +20,23 @@ const TextAtraWrapper = styled.textarea`
   border-radius: 1rem;
 `;
 
-const Input = React.forwardRef(({label,type,children, ...props}, ref) => (
+const Input = React.forwardRef(({label,type,children,placeholder,name, ...props}, ref) => (
   type === 'textarea' ? 
-  <TextAtraWrapper {...props} placeholder={props.name} ref={ref}>
+  <TextAtraWrapper 
+  {...props} 
+  placeholder={placeholder ||name} 
+  ref={ref}
+  name={name}
+  >
     {children}
   </TextAtraWrapper>
   :
-  <InputWrapper {...props} placeholder={props.name} ref={ref}/>
+  <InputWrapper {...props} 
+  placeholder={placeholder || name} 
+  type={type}
+  name={name}
+  ref={ref}
+  />
 ));
 
 export default Input;

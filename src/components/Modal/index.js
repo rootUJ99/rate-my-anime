@@ -1,5 +1,4 @@
 import React from 'react';
-import {Layer} from 'grommet';
 
 
 const Modal = props => {
@@ -7,7 +6,7 @@ const Modal = props => {
   return (
     <>
     {props.open &&
-      <Layer
+      <div
         position="center"
         full
         modal
@@ -16,7 +15,7 @@ const Modal = props => {
         onEsc={props.onClose }
       >
         {props.children}
-      </Layer>}
+      </div>}
     </>
   )
 }

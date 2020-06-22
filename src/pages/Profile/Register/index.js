@@ -32,35 +32,35 @@ const Register = (props) => {
         <Wrapper>
           <Input
             type='email'
-            placeholder='email'
+            placeholder='Email'
             name='email'
             ref={register({ required: true })}
             defaultValue={setInitialValue('email')}
           />
           <Input
             type='text'
-            placeholder='userName'
+            placeholder='Userame'
             name='userName'
             ref={register({ required: true })}
             defaultValue={setInitialValue('userName')}
           />
           <Input
             type='password'
-            placeholder='password'
+            placeholder='Password'
             name='password'
             ref={register({ required: true })}
             defaultValue={setInitialValue('password')}
           />
           <Input
             type='text'
-            placeholder='mobileNumber'
+            placeholder='Mobile Number'
             name='mobileNumber'
             ref={register({ required: true })}
             defaultValue={setInitialValue('mobileNumber')}
           />
           <Input
             type='date'
-            placeholder='dob'
+            placeholder='DOB'
             name='dob'
             ref={register({ required: true })}
             defaultValue={setInitialValue('dob')}

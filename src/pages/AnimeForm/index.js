@@ -60,12 +60,12 @@ const NewAnime = (props) => {
     <img src={selectedAnime?.image_url} style={{width:'16rem'}}/>
     <Label>{selectedAnime?.title}</Label>
       <Input 
-        type="text" 
+        type="range" 
         placeholder="Rating" 
         name="rating"
         mix="1"
         mix="10"
-        ref={register({required: true, max: 5, min: 1, maxLength: 1})} 
+        ref={register({required: true, max: 10, min: 1, maxLength: 1})} 
         defaultValue={selectedAnime?.rating}
       />
       <Input 
@@ -75,12 +75,6 @@ const NewAnime = (props) => {
         ref={register({required: true, maxLength: 1000})} 
         defaultValue={selectedAnime?.review}
       />
-      {/* <Input 
-        type="text" 
-        placeholder="thumbUrl" 
-        name="thumbUrl" 
-        ref={register({required: true})} 
-        defaultValue={setInitialValue("thumbUrl")}/>*/}
       <ButtonWrapper>  
       <Button type="submit">{selectedAnime.new ? 'Submit' : 'Update'}</Button>
       {!selectedAnime.new && 

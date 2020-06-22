@@ -86,6 +86,7 @@ class ApiService {
   completeCallBack(response) {
     // console.log(response);
     if (typeof this.config.completeCallBack === 'function') {
+      console.log('response', response);
       this.config.completeCallBack(response);
     }
     if (this.apiConfig.spinLoaderConfig) {

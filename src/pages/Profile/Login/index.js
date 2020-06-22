@@ -28,8 +28,8 @@ const Login = () => {
     <>
     <form onSubmit={handleSubmit(onSubmit)}>
       <Wrapper>
-        <Input type="text" placeholder="userName" name="userName" ref={register({required: true})} />
-        <Input type="password" placeholder="password" name="password" ref={register({required: true})} />
+        <Input type="text" placeholder="Username" name="userName" ref={register({required: true})} />
+        <Input type="password" placeholder="Password" name="password" ref={register({required: true})} />
         <Button type="submit">Login</Button>
       </Wrapper>
     </form>

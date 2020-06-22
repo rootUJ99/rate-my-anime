@@ -1,5 +1,4 @@
 import React from "react";
-import { Edit } from "grommet-icons";
 import StarRatingComponent from 'react-star-rating-component';
 import Button from "../../components/Button";
 import styled from "styled-components";

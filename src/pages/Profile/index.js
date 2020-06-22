@@ -8,6 +8,14 @@ import UserInfo from './UserInfo';
 import styled from 'styled-components';
 const FlexWrapper = styled.span`
   display: flex;
+  justify-content: center;
+`;
+const CenterContainer = styled.div`
+  display: grid;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  grid-gap: 1rem;
 `;
 const Profile = () => {
   const [{userInfo}] = useContext(RootContext);
@@ -16,23 +24,23 @@ const Profile = () => {
   const showLogin = () => {
     switch(login) {
       case true:
-        return (<>
+        return (<CenterContainer>
         <Login/>
         <br/>
         <FlexWrapper>
-          <p style={{lineHeight: '1em'}}>Don't have account then &nbsp;</p>
+          <div>Don't have account then &nbsp;</div>
           <Button onClick={()=> setLogin(false)}>Register</Button> 
         </FlexWrapper> 
-        </>);
+        </CenterContainer>);
       case false:
-        return(<>
+        return(<CenterContainer>
         <Register/>
         <br/>
         <FlexWrapper>
-          <p style={{lineHeight: '0.5em'}}>Already have an account then &nbsp;</p> 
+          <div>Already have an account then &nbsp;</div> 
           <Button onClick={()=> setLogin(true)}>Login</Button>
         </FlexWrapper>
-        </>);
+        </CenterContainer>);
     }
   };
   const showProfile = () => {
