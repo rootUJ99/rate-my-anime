@@ -1,12 +1,11 @@
 import React, { useEffect, useContext, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 import { getAnimeList, getMyAnimeList } from "./serviceCalls";
 import Card from '../../components/Card';
 import Label from '../../components/Label';
 import RootContext from "../../rootContext";
-import Button from "../../components/Button";
 import ProductGrid from "../../components/ProductGrid";
-import AnimeForm from "../AnimeForm";
+
 import styled from "styled-components";
 const GridContainer = styled.div`
   display:grid;
@@ -21,16 +20,13 @@ const GridContainer = styled.div`
 //   }
 // `;
 const SelectionWrapper = styled.div`
-  :hover {
-    background: black;
-  }
+ 
 `;
 const Home = () => {
   const history = useHistory();
   const [{userInfo}, dispatch] = useContext(RootContext);
   const [list, setList] = useState([]);
   const [myAnimeList, setMyAnimeList] = useState([]);
-  const [animeModal, setAnimeModal] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -41,45 +37,29 @@ const Home = () => {
     })();
   }, []);
 
-  const onEdit = (it) => {
-    dispatch({ type: "select_anime", data: { ...it, newAnime: false } });
-    setAnimeModal(true);
+  const onEdit = (anime) => {
+    // dispatch({ type: "select_anime", data: { ...it, newAnime: false } });
+    history.push('/add', {
+      selectedAnime: {...anime, new: false},
+    })
   };
-  const handleModalOpen = () => {
-    setAnimeModal(true);
-  }
-  const handleModalClose = () => {
-    setAnimeModal(false)
-    dispatch({ type: "select_anime", data: { newAnime: true } });
-  }
+
   return (
     <div >
-{/* 
       { userInfo ? 
-      <>
-        <h1>
-          watched new anime? add a review &nbsp;
-          <Button onClick={handleModalOpen} > hollaz </Button>
-        </h1>
-      <br />
-        <ProductGrid list={list} onEdit={onEdit}/>
-        <AnimeForm />
-      </>
-      : 
-      history.push('/profile')
-    } */}
-    <GridContainer>
-    {
-      myAnimeList.map(it=> 
-        <Card width="16rem">
-          <SelectionWrapper>
-          <img src={it.image_url}/>
-          <Label>{it.title}</Label>
-          </SelectionWrapper>
+      <GridContainer>
+      {
+      list.map(it=> 
+        <Card width="16rem" key={it?.userId} onClick={()=>onEdit(it)} hover>
+          <img src={it?.thumbUrl}/>
+          <Label>{it?.animeName}</Label>
         </Card>
         )
+      }
+        </GridContainer>
+      : 
+      <Redirect to='/profile'/>
     }
-    </GridContainer>
     </div>
   );
 };

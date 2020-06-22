@@ -4,7 +4,7 @@ import {useHistory} from 'react-router-dom';
 import Input from '../../components/Input'
 import Label from '../../components/Label'
 import Card from '../../components/Card'
-import {addAnimeRequest} from './helperFunction';
+import {addAnimeRequest, initialData} from './helperFunction';
 import {addAnimeService, updateAnimeService, deleteAnimeService} from './serviceCalls';
 import RootContext from '../../rootContext';
 import Button from '../../components/Button';
@@ -19,22 +19,23 @@ const Wrapper = styled(CenterWrapper)`
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
+  margin: 1rem;
 `;
 
 const CenterContainer = styled.div`
-  display: flex;
+  display: grid;
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  grid-gap: 1rem;
 `;
 
 const NewAnime = (props) => {
   const history = useHistory();
   const [ state, dispatch] = useContext(RootContext); 
   const { register, handleSubmit, errors } = useForm();
-  const selectedAnime = history?.location?.state?.selectedAnime;
+  const selectedAnime = initialData(history?.location?.state?.selectedAnime);
   
-  // const {selectedAnime} = state;
 
   const onSubmit = async (data) => {
     console.log(selectedAnime, data)
@@ -45,15 +46,12 @@ const NewAnime = (props) => {
     }
   };
 
-  // const setInitialValue = () => {
-  //   if (!selectedAnime.newAnime) return selectedAnime[value];
-  // }
 
   const deleteAnime = async () => {
     await deleteAnimeService(selectedAnime._id);
     history.push('/');
   }
-  console.log()
+
   return (
     <Card>
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -68,14 +66,14 @@ const NewAnime = (props) => {
         mix="1"
         mix="10"
         ref={register({required: true, max: 5, min: 1, maxLength: 1})} 
-        // defaultValue={setInitialValue("rating")}
+        defaultValue={selectedAnime?.rating}
       />
       <Input 
         type="textarea" 
         placeholder="review" 
         name="review" 
         ref={register({required: true, maxLength: 1000})} 
-        // defaultValue={setInitialValue("review")}
+        defaultValue={selectedAnime?.review}
       />
       {/* <Input 
         type="text" 
@@ -85,8 +83,8 @@ const NewAnime = (props) => {
         defaultValue={setInitialValue("thumbUrl")}/>*/}
       <ButtonWrapper>  
       <Button type="submit">{selectedAnime.new ? 'Submit' : 'Update'}</Button>
-      {/* {!selectedAnime.newAnime && 
-      <Button name="deleteAnime" onClick={deleteAnime}>Delete</Button>} */}
+      {!selectedAnime.new && 
+      <Button name="deleteAnime" onClick={deleteAnime} backgrouond="#F76FAF">Delete</Button>}
       </ButtonWrapper>
     </CenterContainer>
     </form>

@@ -4,7 +4,7 @@ import Input from '../../../components/Input';
 import styled from 'styled-components';
 import Button from '../../../components/Button';
 import { getToken } from '../serviceCalls';
-
+import { useHistory} from 'react-router-dom';
 const Wrapper = styled.div`
   display: grid;
   grid-template-rows: auto; 
@@ -15,11 +15,13 @@ const Wrapper = styled.div`
 `;
 
 const Login = () => {
+  const history = useHistory();
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = async data =>{
     const tokenData = await getToken(data);
     console.log(tokenData.data.token);
     localStorage.setItem('token', tokenData.data.token);
+    history.push('/')
     };
   console.log(errors)
   return(

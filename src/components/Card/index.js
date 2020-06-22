@@ -6,6 +6,9 @@ const Container = styled.div`
   border-radius: 0.5rem;
   width: ${props => props.width};
   box-shadow: -16px -20px 53px -19px rgba(0,0,0,0.36);
+  :hover {
+    background: ${props=> props.hover && 'black'};
+  }
 `;
 const Card = ({children, width, ...rest})=> {
   return (

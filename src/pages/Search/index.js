@@ -39,7 +39,7 @@ const SearchPage = () => {
       </FlexContainer>
       <GridContainer>
         {searchdData.map((it) => (
-          <Card width='16rem' onClick={()=>handleClickCards(it)}>
+          <Card width='16rem' onClick={()=>handleClickCards(it)} key={it.image_url} hover>
             <img src={it.image_url} />
             <Label>{it.title}</Label>
           </Card>
