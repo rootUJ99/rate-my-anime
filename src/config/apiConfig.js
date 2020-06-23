@@ -20,6 +20,15 @@ const spinLoaderConfigDefault = {
   actionFunction: () => {},
   spinLoaderKey: 'appLevelLoader',
 };
+
+const handleSessionTimout = (error) => {
+  if (error && error.response && error.response && error.response.status === 403) {
+    console.log(error.response);
+    localStorage.removeItem('token');
+    window.location.replace('/profile');
+  }
+};
+
 const getAxiosApiConfig = apiKey => {
   // eslint-disable-next-line no-bitwise
   if (apiKey && ~apiKey.indexOf('.')) {
@@ -56,6 +65,7 @@ const getConfig = apiKey => {
       config = config || {};
       if (currentEnvironmentConfig.enableAuthorization && !currentApi.skipAuth) {
         config = getJWTHeader(config, currentApi.useRefreshToken);
+        config.handleSessionTimout = handleSessionTimout;
       }
       config.apiKey = apiKey;
     }

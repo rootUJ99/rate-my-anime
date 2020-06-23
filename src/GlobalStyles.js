@@ -13,8 +13,9 @@ const GlobalStyles = createGlobalStyle`
 body {
   /* font-family: 'Noto Sans KR', sans-serif; */
   font-family: 'Source Sans Pro', sans-serif;
-  font-size: calc(1vw + 1vh + .5vmin);
+  font-size: clamp(1rem, 1vw, 2rem); 
   margin: 0;
+
 }
 `;
 

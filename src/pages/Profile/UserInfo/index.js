@@ -4,10 +4,13 @@ import Card from "../../../components/Card";
 import Register from "../Register";
 import {getUserDetails} from '../serviceCalls';
 import { CenterWrapper } from '../../../StyledComponents';
-
+import styled from 'styled-components';
+const StyledP = styled.p`
+  margin: 0.4rem;
+`;
 const UserInfo = (props) => {
   const [userInfo, setUserInfo] = useState({});
-  const [userModal, setUserModal] = useState(false);
+  const [edit, setEdit] = useState(false);
   useEffect(() => {
     (async ()=> {
       const userInfo = await getUserDetails(props.userInfo.id)
@@ -17,23 +20,22 @@ const UserInfo = (props) => {
 
   const handleEditProfile = () => {
     console.log('edit');
-    setUserModal(true);
+    setEdit(!edit);
   }
   return (
     <>
       <Card>
           <h3>Profile Details</h3>
-          <CenterWrapper>
-            <p>User Name ---> <b>{userInfo.userName}</b> </p>
-            <p>Date of Birth ---> <b>{userInfo.dob}</b> </p>
-            <p>Mobile No. ---> <b>{userInfo.mobileNumber}</b> </p>
-            <p>Email ---> <b>{userInfo.email}</b> </p>
+          {edit && <Button onClick={handleEditProfile}>Back</Button>}
+          {!edit && <CenterWrapper>
+          <StyledP>User Name --- <b>{userInfo.userName}</b> </StyledP>
+          <StyledP>Date of Birth --- <b>{userInfo.dob}</b> </StyledP>
+          <StyledP>Mobile No. --- <b>{userInfo.mobileNumber}</b> </StyledP>
+          <StyledP>Email --- <b>{userInfo.email}</b> </StyledP>
             <Button name="editProfile" onClick={handleEditProfile}>Edit</Button>
-          </CenterWrapper>
+          </CenterWrapper>}
+        {edit && <Register userInfo={userInfo} updateUser/>}
         </Card>
-      {/* <Modal open={userModal} onClose={()=> setUserModal(false)}>
-        <Register userInfo={userInfo} updateUser/>
-      </Modal> */}
     </>
   )
 }

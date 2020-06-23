@@ -8,6 +8,7 @@ const Container = styled.div`
   box-shadow: -16px -20px 53px -19px rgba(0,0,0,0.36);
   :hover {
     background: ${props=> props.hover && 'black'};
+    /* width: ${props => `calc(${props.width} + 10%)` } */
   }
 `;
 const Card = ({children, width, ...rest})=> {
