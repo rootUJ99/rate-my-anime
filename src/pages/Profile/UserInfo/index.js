@@ -5,10 +5,16 @@ import Register from "../Register";
 import {getUserDetails} from '../serviceCalls';
 import { CenterWrapper } from '../../../StyledComponents';
 import styled from 'styled-components';
+import {useHistory} from 'react-router-dom';
 const StyledP = styled.p`
   margin: 0.4rem;
 `;
+const LeftContainer = styled.div`
+  display: flex;
+  flex-direction: row-reverse;
+`;
 const UserInfo = (props) => {
+  const history = useHistory()
   const [userInfo, setUserInfo] = useState({});
   const [edit, setEdit] = useState(false);
   useEffect(() => {
@@ -22,10 +28,17 @@ const UserInfo = (props) => {
     console.log('edit');
     setEdit(!edit);
   }
+  const handleLogout = () => {
+    localStorage.removeItem('token')
+    history.push('/')
+  }
   return (
     <>
       <Card>
           <h3>Profile Details</h3>
+          <LeftContainer>
+            <Button onClick={handleLogout}>Logout</Button>
+          </LeftContainer>
           {edit && <Button onClick={handleEditProfile}>Back</Button>}
           {!edit && <CenterWrapper>
           <StyledP>User Name --- <b>{userInfo.userName}</b> </StyledP>
