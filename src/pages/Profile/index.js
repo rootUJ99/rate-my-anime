@@ -19,7 +19,7 @@ const CenterContainer = styled.div`
 `;
 const Profile = () => {
   const [{userInfo}] = useContext(RootContext);
-  const [login, setLogin] = useState(false);
+  const [login, setLogin] = useState(true);
 
   const showLogin = () => {
     switch(login) {

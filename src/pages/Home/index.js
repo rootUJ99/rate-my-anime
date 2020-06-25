@@ -13,32 +13,20 @@ const GridContainer = styled.div`
   grid-gap: 2rem;
   justify-items:center;
 `;
-// const StyledImage = styled.img`
-//   width: 15rem;
-//   @media (max-width: 420px) {
-//     width: 7rem;
-//   }
-// `;
-const SelectionWrapper = styled.div`
- 
-`;
+
 const Home = () => {
   const history = useHistory();
-  const [{userInfo}, dispatch] = useContext(RootContext);
+  const [{userInfo}] = useContext(RootContext);
   const [list, setList] = useState([]);
-  const [myAnimeList, setMyAnimeList] = useState([]);
 
   useEffect(() => {
     (async () => {
       const response = await getAnimeList();
       setList(response.data);
-      const res = await getMyAnimeList()
-      setMyAnimeList(res.data.results)
     })();
   }, []);
 
   const onEdit = (anime) => {
-    // dispatch({ type: "select_anime", data: { ...it, newAnime: false } });
     history.push('/add', {
       selectedAnime: {...anime, new: false},
     })
