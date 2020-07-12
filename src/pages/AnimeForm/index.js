@@ -39,10 +39,17 @@ const NewAnime = (props) => {
 
   const onSubmit = async (data) => {
     console.log(selectedAnime, data)
-    if (selectedAnime?.new){
-      await addAnimeService(addAnimeRequest(data, selectedAnime));
-    } else {
-      await updateAnimeService(selectedAnime._id, {...data});
+    try {
+      if (selectedAnime?.new){
+        await addAnimeService(addAnimeRequest(data, selectedAnime));
+      } else {
+        await updateAnimeService(selectedAnime._id, {...data});
+      }
+    } catch (error) {
+      console.log(error)
+    }
+    finally {
+      history.push('/');
     }
   };
 
@@ -60,7 +67,7 @@ const NewAnime = (props) => {
     <img src={selectedAnime?.image_url} style={{width:'16rem'}}/>
     <Label>{selectedAnime?.title}</Label>
       <Input 
-        type="range" 
+        type="number" 
         placeholder="Rating" 
         name="rating"
         mix="1"
