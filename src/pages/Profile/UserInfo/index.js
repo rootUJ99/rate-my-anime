@@ -6,6 +6,8 @@ import {getUserDetails} from '../serviceCalls';
 import { CenterWrapper } from '../../../StyledComponents';
 import styled from 'styled-components';
 import {useHistory} from 'react-router-dom';
+import { FlexCenterWrapper } from '../../../StyledComponents';
+
 const StyledP = styled.p`
   margin: 0.4rem;
 `;
@@ -33,8 +35,8 @@ const UserInfo = (props) => {
     history.push('/')
   }
   return (
-    <>
-      <Card>
+    <FlexCenterWrapper>
+      <Card width="50%">
           <h3>Profile Details</h3>
           <LeftContainer>
             <Button onClick={handleLogout}>Logout</Button>
@@ -49,7 +51,7 @@ const UserInfo = (props) => {
           </CenterWrapper>}
         {edit && <Register userInfo={userInfo} updateUser/>}
         </Card>
-    </>
+    </FlexCenterWrapper>
   )
 }
 

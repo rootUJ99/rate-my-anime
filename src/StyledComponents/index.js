@@ -5,3 +5,7 @@ export const CenterWrapper = styled.div`
   justify-content: center;
   align-items: center;
 `;
+export const FlexCenterWrapper = styled.div`
+  display:flex;
+  justify-content: center;
+`;
