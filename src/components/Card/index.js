@@ -14,10 +14,13 @@ const Container = styled.div`
         background: #f6f6f6;
     }`
   }
+  @media (max-width: 640px){
+    width: ${props => props.sWidth || 'inherit'};
+  }
 `;
-const Card = ({children, width, ...rest})=> {
+const Card = ({children, width, sWidth, ...rest})=> {
   return (
-    <Container width={width} {...rest}>
+    <Container width={width} sWidth={sWidth}{...rest}>
       {children}
     </Container>
   )
