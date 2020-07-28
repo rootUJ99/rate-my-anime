@@ -5,8 +5,10 @@ const Container = styled.div`
   padding: 1rem;
   border-radius: 0.5rem;
   width: ${props => props.width};
+  box-sizing: border-box;
   /* box-shadow: -16px -20px 53px -19px rgba(0,0,0,0.36); */
   box-shadow:  -9px 11px 79px -2px rgba(0,0,0,0.18);
+  transition: box-shadow .3s;
   transition: transform .2s;
   ${ props => props.hover &&
     `:hover {

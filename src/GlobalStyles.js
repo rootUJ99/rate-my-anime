@@ -15,7 +15,7 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: clamp(1rem, 1vw, 2rem); 
   margin: 0;
-
+  background:#fdfdfd;
 }
 `;
 
