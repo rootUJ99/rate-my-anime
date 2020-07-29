@@ -9,6 +9,7 @@ const SelectWrapper = styled.select`
   width: 15rem;
   height: 2rem;
   border-radius: 1rem;
+  width: ${(props) => props.width || '15rem'};
 `;
 
 const Select = forwardRef(({options, ...props}, ref) => (

@@ -101,21 +101,21 @@ const NewAnime = (props) => {
           type="date" 
           placeholder="Start Date" 
           name="startDate" 
-          // ref={register({required: true, maxLength: 1000})} 
+          ref={register({required: false})} 
           defaultValue={selectedAnime?.startDate}
         />
         <Input 
           type="date" 
           placeholder="End Date" 
           name="endDate" 
-          // ref={register({required: true, maxLength: 1000})} 
+          ref={register({required: false})} 
           defaultValue={selectedAnime?.endDate}
         />
         <Select 
           type="status" 
-          placeholder="end Date" 
-          name="endDate" 
-          // ref={register({required: true, maxLength: 1000})} 
+          placeholder="Status" 
+          name="status" 
+          ref={register({required: true})} 
           defaultValue={selectedAnime?.status}
           options={options}
         />
