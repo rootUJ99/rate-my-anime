@@ -2,6 +2,7 @@ import React, {useContext, useReducer} from 'react';
 import { useForm } from "react-hook-form";
 import {useHistory} from 'react-router-dom';
 import Input from '../../components/Input'
+import Select from '../../components/Select'
 import Label from '../../components/Label'
 import Card from '../../components/Card'
 import {addAnimeRequest, initialData} from './helperFunction';
@@ -27,6 +28,21 @@ const CenterContainer = styled.div`
   grid-gap: 1rem;
 `;
 
+const options = [
+  {
+    label: 'Completed',
+    value: 'completed',
+  },
+  {
+    label: 'Watching',
+    value: 'watching',
+  },
+  {
+    label: 'Wishlist',
+    value: 'wishlist',
+  },
+]
+
 const NewAnime = (props) => {
   const history = useHistory();
   const [ state, dispatch] = useContext(RootContext); 
@@ -49,6 +65,7 @@ const NewAnime = (props) => {
       history.push('/');
     }
   };
+
 
 
   const deleteAnime = async () => {
@@ -75,10 +92,32 @@ const NewAnime = (props) => {
         />
         <Input 
           type="textarea" 
-          placeholder="review" 
+          placeholder="Review" 
           name="review" 
           ref={register({required: true, maxLength: 1000})} 
           defaultValue={selectedAnime?.review}
+        />
+        <Input 
+          type="date" 
+          placeholder="Start Date" 
+          name="startDate" 
+          // ref={register({required: true, maxLength: 1000})} 
+          defaultValue={selectedAnime?.startDate}
+        />
+        <Input 
+          type="date" 
+          placeholder="End Date" 
+          name="endDate" 
+          // ref={register({required: true, maxLength: 1000})} 
+          defaultValue={selectedAnime?.endDate}
+        />
+        <Select 
+          type="status" 
+          placeholder="end Date" 
+          name="endDate" 
+          // ref={register({required: true, maxLength: 1000})} 
+          defaultValue={selectedAnime?.status}
+          options={options}
         />
         <ButtonWrapper>  
         <Button type="submit">{selectedAnime.new ? 'Submit' : 'Update'}</Button>
