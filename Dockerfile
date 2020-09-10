@@ -11,9 +11,14 @@ WORKDIR /opt/ratemyanime/client
 COPY package.json .
 
 RUN npm cache clean --force
-RUN npm install
+RUN npm install --silent
+RUN npm install react-scripts@3.4.1 -g --silent
 
 COPY . ./
+
+RUN npm run build
+
+# CMD ["npm", "run", "prod"]
 
 # EXPOSE 3000
 
