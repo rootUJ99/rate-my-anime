@@ -5,7 +5,6 @@ import logger from 'morgan';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import indexRouter from './routes/index.js';
 import usersRouter from './routes/users.js';
 import animeRouter from './routes/anime.js';
 import jwtMiddleWare from './middlewares/auth.js';
@@ -35,6 +34,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 const exceptPaths = (pathArr, middleware) => {
   return (req, res, next) => {
+    if (!req.path.includes('/api')){
+      return next();
+    }
     if (pathArr.includes(req.path)) {
       return next();
     }
@@ -43,7 +45,6 @@ const exceptPaths = (pathArr, middleware) => {
 }
 const excludedArr =['/api/user/token','/api/user/create', '/api/anime/myAnimelist'];
 app.use(exceptPaths(excludedArr,jwtMiddleWare));
-app.use('/', indexRouter);
 app.use('/api/user', usersRouter);
 app.use('/api/anime', animeRouter);
 

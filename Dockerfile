@@ -6,7 +6,7 @@ FROM node:14-buster
 # RUN apt-get install --yes nodejs
 # RUN apt-get install --yes build-essential
 
-WORKDIR /opt/ratemyanime/client
+WORKDIR /opt/ratemyanime/
 
 COPY package.json .
 

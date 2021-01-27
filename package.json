@@ -34,7 +34,7 @@
     "server": "nodemon server/server.js",
     "start": "concurrently \" npm run server\" \"npm run client\"",
     "build": "react-scripts build",
-    "prod": "node runner/runner.js",
+    "prod": "node server/server.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
