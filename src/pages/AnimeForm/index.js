@@ -17,14 +17,13 @@ import styled from 'styled-components';
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
-  margin: 1rem;
 `;
 
 const CenterContainer = styled.div`
   display: grid;
   justify-content: center;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   grid-gap: 1rem;
 `;
 

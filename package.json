@@ -32,7 +32,7 @@
   "scripts": {
     "client": "react-scripts start",
     "server": "nodemon server/server.js",
-    "start" : "concurrently \" npm run server\" \"npm run client\"",
+    "start": "concurrently \" npm run server\" \"npm run client\"",
     "build": "react-scripts build",
     "prod": "node runner/runner.js",
     "test": "react-scripts test",
