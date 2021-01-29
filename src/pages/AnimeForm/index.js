@@ -75,7 +75,7 @@ const NewAnime = (props) => {
   return (
     <FlexCenterWrapper>
       <Card width="50%" sWidth="100%">
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} givePadd>
       <CenterContainer>
 
       <img src={selectedAnime?.image_url} style={{width:'16rem'}}/>

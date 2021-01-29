@@ -4,7 +4,6 @@ import { getAnimeList, getMyAnimeList } from "./serviceCalls";
 import Card from '../../components/Card';
 import Label from '../../components/Label';
 import RootContext from "../../rootContext";
-import ProductGrid from "../../components/ProductGrid";
 
 import styled from "styled-components";
 const GridContainer = styled.div`
@@ -12,6 +11,10 @@ const GridContainer = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
   grid-gap: 2rem;
   justify-items:center;
+`;
+const Img = styled.img`
+  border-top-left-radius: 0.7rem;
+  border-top-right-radius: 0.7rem;
 `;
 
 const Home = () => {
@@ -38,8 +41,8 @@ const Home = () => {
       <GridContainer>
       {
       list.map(it=> 
-        <Card width="16rem" key={it?.userId} onClick={()=>onEdit(it)} hover>
-          <img src={it?.thumbUrl}/>
+        <Card key={it?.userId} onClick={()=>onEdit(it)} hover givePadd={false}>
+          <Img src={it?.thumbUrl}/>
           <Label>{it?.animeName}</Label>
         </Card>
         )

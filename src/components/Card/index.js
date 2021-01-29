@@ -2,8 +2,8 @@ import React from 'react'
 import styled from 'styled-components';
 const Container = styled.div`
   background: #f0f0f3;
-  padding: 1rem;
-  border-radius: 0.5rem;
+  padding: ${props => props.givePadd ? '1rem' : 0}; 
+  border-radius: 0.7rem;
   width: ${props => props.width};
   box-sizing: border-box;
   /* box-shadow: -16px -20px 53px -19px rgba(0,0,0,0.36); */

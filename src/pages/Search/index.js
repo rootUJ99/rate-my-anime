@@ -16,6 +16,10 @@ const FlexContainer = styled.div`
   justify-content: center;
   margin-bottom: 2rem;
 `;
+const Img = styled.img`
+  border-top-left-radius: 0.7rem;
+  border-top-right-radius: 0.7rem;
+`;
 const SearchPage = () => {
   const history = useHistory()
   const [searchdData, setSearchdData] = useState([]);
@@ -39,8 +43,8 @@ const SearchPage = () => {
       </FlexContainer>
       <GridContainer>
         {searchdData.map((it) => (
-          <Card width='16rem' onClick={()=>handleClickCards(it)} key={it.image_url} hover>
-            <img src={it.image_url} />
+          <Card width='16rem' onClick={()=>handleClickCards(it)} key={it.image_url} hover givePadd={false}>
+            <Img src={it.image_url} />
             <Label>{it.title}</Label>
           </Card>
         ))}

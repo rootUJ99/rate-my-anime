@@ -36,7 +36,7 @@ const UserInfo = (props) => {
   }
   return (
     <FlexCenterWrapper>
-      <Card width="50%" sWidth="100%">
+      <Card width="50%" sWidth="100%" givePadd>
           <h3>Profile Details</h3>
           <LeftContainer>
             <Button onClick={handleLogout}>Logout</Button>
