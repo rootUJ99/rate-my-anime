@@ -74,7 +74,7 @@ const NewAnime = (props) => {
 
   return (
     <FlexCenterWrapper>
-      <Card width="50%" sWidth="100%">
+      <Card width="50%" sWidth="100%" givePadd>
       <form onSubmit={handleSubmit(onSubmit)} givePadd>
       <CenterContainer>
 

@@ -43,7 +43,7 @@ const Home = () => {
       list.map(it=> 
         <Card key={it?.userId} onClick={()=>onEdit(it)} hover givePadd={false}>
           <Img src={it?.thumbUrl}/>
-          <Label>{it?.animeName}</Label>
+          <Label width='14rem'>{it?.animeName}</Label>
         </Card>
         )
       }
