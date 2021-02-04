@@ -9,7 +9,7 @@ const AnimeListSchema = mongoose.Schema({
   dateCreated: String,
   startDate: String,
   endDate: String,
-  status: { type: String, enum: ['completed, watching, wishlist']}
+  status: { type: String, enum: ['completed', 'watching', 'wishlist']}
 });
 const AnimeDoc = mongoose.model('Anime', AnimeListSchema);
 export default AnimeDoc;

@@ -8,7 +8,7 @@ import RootContext from "../../rootContext";
 import styled from "styled-components";
 const GridContainer = styled.div`
   display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
   grid-gap: 2rem;
   justify-items:center;
 `;
@@ -20,7 +20,7 @@ const Img = styled.img`
 const Home = () => {
   const history = useHistory();
   const [{userInfo}] = useContext(RootContext);
-  const [list, setList] = useState([]);
+  const [list, setList] = useState(null);
 
   useEffect(() => {
     (async () => {
@@ -37,19 +37,33 @@ const Home = () => {
 
   return (
     <div >
-      { userInfo ? 
-      <GridContainer>
-      {
-      list.map(it=> 
-        <Card key={it?.userId} onClick={()=>onEdit(it)} hover givePadd={false}>
-          <Img src={it?.thumbUrl}/>
-          <Label width='14rem'>{it?.animeName}</Label>
-        </Card>
-        )
-      }
-        </GridContainer>
-      : 
-      <Redirect to='/profile'/>
+      { 
+      // userInfo ? 
+      // {
+        // list && list.length!==0 ? list?.map(it=> 
+        //   <Card key={it?.userId} onClick={()=>onEdit(it)} hover givePadd={false}>
+        //     <Img src={it?.thumbUrl}/>
+        //     <Label width='14rem'>{it?.animeName}</Label>
+        //   </Card>
+        //   ): <p style={}>Add animes</p>
+        // }
+        //   </GridContainer>
+        // : 
+        // <Redirect to='/profile'/>
+        (()=>{
+          if (!userInfo) return (<Redirect to="/profile"/>);
+          
+          else if (!list?.length) return (<p style={{textAlign: 'center'}}>Add animes</p>);
+          
+          else return list?.map(it=> 
+            <GridContainer>
+            <Card key={it?.userId} onClick={()=>onEdit(it)} hover givePadd={false}>
+              <Img src={it?.thumbUrl}/>
+              <Label width='14rem'>{it?.animeName}</Label>
+            </Card>
+            </GridContainer>
+            )
+      })()
     }
     </div>
   );
